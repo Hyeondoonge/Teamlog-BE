@@ -92,6 +92,17 @@ public class PostService {
         return responses;
     }
 
+    // 위치정보가 있는 Public 포스트들 조회
+    public List<PostDTO.PostResponse> getLocationPosts() {
+        List<Post> posts = postRepository.findAllByAccessModifier_PublicAndLocationIsNotNull();
+
+        List<PostDTO.PostResponse> responses = new ArrayList<>();
+        for(Post post : posts) {
+            responses.add(convertToPostResponse(post));
+        }
+        return responses;
+    }
+
     // 포스트 생성
     @Transactional
     public ApiResponse createPost(PostDTO.PostRequest request, MultipartFile[] media, MultipartFile[] files) {
