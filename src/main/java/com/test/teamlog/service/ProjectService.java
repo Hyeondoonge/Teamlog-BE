@@ -29,10 +29,6 @@ public class ProjectService {
     private final ProjectJoinRepository projectJoinRepository;
     private final PostRepository postRepository;
     private final FileStorageService fileStorageService;
-    private String[] defaultProjectImages = new String[]{"20210504(81931d0a-14c3-43bd-912d-c4bd687c31ea)",
-            "20210504(97a31008-24f4-4dc0-98bd-c83cf8d57b95)",
-            "20210504(171eb9ac-f7ce-4e30-b4c6-a19a28e45c75)",
-            "20210504(31157ace-269d-4a84-a73a-7a584f91ad9f)"};
 
     public List<ProjectDTO.ProjectSimpleInfo> getRecommendedProjects(User currentUser) {
         List<ProjectDTO.ProjectSimpleInfo> response = new ArrayList<>();
@@ -82,16 +78,13 @@ public class ProjectService {
         for (Project project : teamProjectList) {
             long postcount = postRepository.getPostsCount(project);
 
-            String path = null;
-            if (project.getThumbnail() == null) {
-                path = defaultProjectImages[project.getId().intValue() % 4];
-            } else {
-                path = project.getThumbnail();
+            String imgUri = null;
+            if(project.getThumbnail() != null) {
+                imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/resources/")
+                        .path(project.getThumbnail())
+                        .toUriString();
             }
-            String imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/resources/")
-                    .path(path)
-                    .toUriString();
 
             ProjectDTO.ProjectListResponse item = ProjectDTO.ProjectListResponse.builder()
                     .id(project.getId())
@@ -134,16 +127,13 @@ public class ProjectService {
 
             long postcount = postRepository.getPostsCount(project);
 
-            String path = null;
-            if (project.getThumbnail() == null) {
-                path = defaultProjectImages[project.getId().intValue() % 4];
-            } else {
-                path = project.getThumbnail();
+            String imgUri = null;
+            if(project.getThumbnail() != null) {
+                imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/resources/")
+                        .path(project.getThumbnail())
+                        .toUriString();
             }
-            String imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/resources/")
-                    .path(path)
-                    .toUriString();
             ProjectDTO.ProjectListResponse item = ProjectDTO.ProjectListResponse.builder()
                     .id(project.getId())
                     .name(project.getName())
@@ -168,16 +158,13 @@ public class ProjectService {
 
             long postCount = project.getPosts().size();
 
-            String path = null;
-            if (project.getThumbnail() == null) {
-                path = defaultProjectImages[project.getId().intValue() % 4];
-            } else {
-                path = project.getThumbnail();
+            String imgUri = null;
+            if(project.getThumbnail() != null) {
+                imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/resources/")
+                        .path(project.getThumbnail())
+                        .toUriString();
             }
-            String imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/resources/")
-                    .path(path)
-                    .toUriString();
             ProjectDTO.ProjectListResponse item = ProjectDTO.ProjectListResponse.builder()
                     .id(project.getId())
                     .name(project.getName())
@@ -213,16 +200,14 @@ public class ProjectService {
             validateUserIsMemberOfProject(project, currentUser);
         }
         ProjectDTO.ProjectResponse projectResponse = new ProjectDTO.ProjectResponse(project);
-        String path = null;
-        if (project.getThumbnail() == null) {
-            path = defaultProjectImages[project.getId().intValue() % 4];
-        } else {
-            path = project.getThumbnail();
+
+        String imgUri = null;
+        if(project.getThumbnail() != null) {
+            imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/resources/")
+                    .path(project.getThumbnail())
+                    .toUriString();
         }
-        String imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/resources/")
-                .path(path)
-                .toUriString();
         projectResponse.setThumbnail(imgUri);
         projectResponse.setRelation(getRelation(project, currentUser));
         return projectResponse;
@@ -256,16 +241,13 @@ public class ProjectService {
 
             long postcount = postRepository.getPostsCount(project);
 
-            String path = null;
-            if (project.getThumbnail() == null) {
-                path = defaultProjectImages[project.getId().intValue() % 4];
-            } else {
-                path = project.getThumbnail();
+            String imgUri = null;
+            if(project.getThumbnail() != null) {
+                imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/resources/")
+                        .path(project.getThumbnail())
+                        .toUriString();
             }
-            String imgUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/resources/")
-                    .path(path)
-                    .toUriString();
             ProjectDTO.ProjectListResponse item = ProjectDTO.ProjectListResponse.builder()
                     .id(project.getId())
                     .masterId(project.getMaster().getId())

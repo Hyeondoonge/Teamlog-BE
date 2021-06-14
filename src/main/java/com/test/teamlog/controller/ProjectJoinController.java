@@ -19,8 +19,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
-public class ProjectJoinController extends TeamMemberController {
+public class ProjectJoinController{
     private final ProjectJoinService projectJoinService;
 
     @ApiOperation(value = "프로젝트 멤버 초대(신청) 추가")
