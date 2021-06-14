@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RestControllerExceptionHandler {
 
+    @ExceptionHandler(ExpiredTokenException.class)
+    public ResponseEntity<ApiResponse> resolveException(ExpiredTokenException exception) {
+        ApiResponse apiResponse = exception.getApiResponse();
+        return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiResponse> resolveException(ResourceNotFoundException exception) {
         ApiResponse apiResponse = exception.getApiResponse();

@@ -11,17 +11,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EnableSwagger2
 public class SwaggerConfig {
 
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
+    @Bean public Docket api() {
+
+        return new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.test.teamlog"))
-                .paths(PathSelectors.any())
-                .build();
+                .paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo() {

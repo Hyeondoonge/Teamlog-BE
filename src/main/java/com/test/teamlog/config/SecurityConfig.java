@@ -35,10 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/sign-in", "/api/users").permitAll()
-                .antMatchers(HttpMethod.GET, "/resources/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/downloadFile/**").permitAll()
-                .antMatchers("/swagger-resources/**", "/swagger-ui.html", "/webjars/**").permitAll()
+                .antMatchers("/v3/api-docs/**").permitAll()   // OAS_30
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

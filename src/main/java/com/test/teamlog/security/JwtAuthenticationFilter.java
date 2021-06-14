@@ -1,5 +1,6 @@
 package com.test.teamlog.security;
 
+import com.test.teamlog.exception.ExpiredTokenException;
 import com.test.teamlog.service.CustomUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         } catch (ExpiredJwtException e) {
-
+//            throw new ExpiredTokenException("로그인 토큰 만료됨");
         } catch (Exception e) {
 
         }
