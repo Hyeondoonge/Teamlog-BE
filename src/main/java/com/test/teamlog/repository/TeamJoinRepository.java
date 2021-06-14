@@ -1,5 +1,6 @@
 package com.test.teamlog.repository;
 
+import com.test.teamlog.entity.User;
 import com.test.teamlog.entity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -7,6 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TeamJoinRepository extends JpaRepository<TeamJoin, Long> {
+    <S extends TeamJoin> S save(S entity);
+    void delete(TeamJoin entity);
+
     Optional<TeamJoin> findByTeamAndUser(Team team, User user);
     List<TeamJoin> findAllByTeamAndIsAcceptedFalseAndIsInvitedTrue(Team team);
     List<TeamJoin> findAllByTeamAndIsAcceptedTrueAndIsInvitedFalse(Team team);

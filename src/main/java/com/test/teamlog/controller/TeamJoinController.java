@@ -4,7 +4,6 @@ import com.test.teamlog.entity.User;
 import com.test.teamlog.payload.ApiResponse;
 import com.test.teamlog.payload.TeamJoinDTO;
 import com.test.teamlog.service.TeamJoinService;
-import com.test.teamlog.service.TeamService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

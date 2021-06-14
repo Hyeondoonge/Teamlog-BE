@@ -1,6 +1,5 @@
 package com.test.teamlog.repository;
 
-import com.test.teamlog.entity.Project;
 import com.test.teamlog.entity.Team;
 import com.test.teamlog.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
+    <S extends Team> S save(S entity);
+    void delete(Team entity);
+
     @Query("SELECT t FROM Team t WHERE t.name LIKE concat('%',:name,'%')")
     List<Team> searchTeamByName(@Param("name") String name);
 

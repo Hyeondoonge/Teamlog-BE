@@ -1,6 +1,6 @@
 package com.test.teamlog.service;
 
-import com.test.teamlog.entity.Project;
+import com.test.teamlog.payload.UserDTO;
 import com.test.teamlog.entity.ProjectMember;
 import com.test.teamlog.entity.TeamMember;
 import com.test.teamlog.entity.User;
@@ -8,7 +8,6 @@ import com.test.teamlog.exception.BadRequestException;
 import com.test.teamlog.exception.ResourceAlreadyExistsException;
 import com.test.teamlog.exception.ResourceNotFoundException;
 import com.test.teamlog.payload.ApiResponse;
-import com.test.teamlog.payload.UserDTO;
 import com.test.teamlog.repository.ProjectMemberRepository;
 import com.test.teamlog.repository.TeamMemberRepository;
 import com.test.teamlog.repository.UserRepository;
@@ -108,7 +107,6 @@ public class UserService {
         }
         currentUser.setName(userRequest.getName());
         currentUser.setIntroduction(userRequest.getIntroduction());
-        userRepository.save(currentUser);
         return new ApiResponse(Boolean.TRUE, "사용자 정보 수정 성공");
     }
 
@@ -120,7 +118,6 @@ public class UserService {
         }
         String profileImgPath = fileStorageService.storeFile(image, null, null);
         currentUser.setProfileImgPath(profileImgPath);
-        userRepository.save(currentUser);
         return new ApiResponse(Boolean.TRUE, "프로필 이미지 수정 성공");
     }
 

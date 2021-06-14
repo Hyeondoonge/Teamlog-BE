@@ -11,6 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface TeamFollowerRepository extends JpaRepository<TeamFollower, Long> {
+    <S extends TeamFollower> S save(S entity);
+    void delete(TeamFollower entity);
+
     List<TeamFollower> findAllByUser(User user);
     List<TeamFollower> findAllByTeam(Team team);
     Optional<TeamFollower> findByTeamAndUser(Team team,User user);

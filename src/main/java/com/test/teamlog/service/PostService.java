@@ -1,5 +1,7 @@
 package com.test.teamlog.service;
 
+import com.test.teamlog.entity.User;
+import com.test.teamlog.payload.UserDTO;
 import com.test.teamlog.entity.*;
 import com.test.teamlog.exception.ResourceAlreadyExistsException;
 import com.test.teamlog.exception.ResourceNotFoundException;

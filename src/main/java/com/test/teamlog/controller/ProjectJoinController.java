@@ -4,7 +4,6 @@ import com.test.teamlog.entity.User;
 import com.test.teamlog.payload.ApiResponse;
 import com.test.teamlog.payload.ProjectJoinDTO;
 import com.test.teamlog.service.ProjectJoinService;
-import com.test.teamlog.service.ProjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
-public class ProjectJoinController {
+public class ProjectJoinController extends TeamMemberController {
     private final ProjectJoinService projectJoinService;
 
     @ApiOperation(value = "프로젝트 멤버 초대(신청) 추가")

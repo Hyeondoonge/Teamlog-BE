@@ -3,7 +3,6 @@ package com.test.teamlog.repository;
 import com.test.teamlog.entity.Project;
 import com.test.teamlog.entity.Team;
 import com.test.teamlog.entity.User;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +12,9 @@ import java.util.List;
 
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
+    <S extends Project> S save(S entity);
+    void delete(Project entity);
+
     // 카운트
     @Query("SELECT COUNT(p) FROM Project p Where p.team = :team")
     long getProjectCount(@Param("team") Team team);

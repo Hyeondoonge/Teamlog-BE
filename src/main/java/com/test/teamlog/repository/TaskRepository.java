@@ -3,6 +3,7 @@ package com.test.teamlog.repository;
 import com.test.teamlog.entity.Project;
 import com.test.teamlog.entity.Task;
 import com.test.teamlog.entity.TaskStatus;
+import com.test.teamlog.entity.TeamFollower;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
@@ -19,6 +20,9 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
+    <S extends Task> S save(S entity);
+    void delete(Task entity);
+
     List<Task> findByProject(Project project, Sort sort);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)

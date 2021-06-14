@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserFollowRepository extends JpaRepository<UserFollow, Long> {
-    public Optional<UserFollow> findByFromUserAndToUser(User user, User targetUser);
-    public List<UserFollow> findByFromUser(User user);
+    <S extends UserFollow> S save(S entity);
+    void delete(UserFollow entity);
+    Optional<UserFollow> findByFromUserAndToUser(User user, User targetUser);
+    List<UserFollow> findByFromUser(User user);
 }

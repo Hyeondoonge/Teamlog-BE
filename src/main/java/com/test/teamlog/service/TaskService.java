@@ -1,5 +1,6 @@
 package com.test.teamlog.service;
 
+import com.test.teamlog.entity.User;
 import com.test.teamlog.entity.*;
 import com.test.teamlog.exception.ResourceNotFoundException;
 import com.test.teamlog.payload.ApiResponse;
@@ -16,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.LockModeType;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
