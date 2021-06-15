@@ -85,7 +85,7 @@ public class TeamJoinService {
     }
 
     // 팀 멤버 신청자 목록 조회
-    public List<TeamJoinDTO.TeamJoinForTeam> getTeamApplyListForTeam(Long teamId) {
+    public List<TeamJoinDTO.TeamJoinForTeam> getTeamAppliesForTeam(Long teamId) {
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new ResourceNotFoundException("Team", "id", teamId));
 
@@ -105,7 +105,7 @@ public class TeamJoinService {
     }
 
     // 팀 멤버로 초대한 사용자 목록 조회
-    public List<TeamJoinDTO.TeamJoinForTeam> getTeamInvitationListForTeam(Long teamId) {
+    public List<TeamJoinDTO.TeamJoinForTeam> getTeamInvitationsForTeam(Long teamId) {
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new ResourceNotFoundException("Team", "id", teamId));
 
@@ -126,7 +126,7 @@ public class TeamJoinService {
 
 
     // 유저가 가입 신청한 팀 목록 조회
-    public List<TeamJoinDTO.TeamJoinForUser> getTeamApplyListForUser(User currentUser) {
+    public List<TeamJoinDTO.TeamJoinForUser> getTeamAppliesForUser(User currentUser) {
         List<TeamJoin> teamJoins = teamJoinRepository.findAllByUserAndIsAcceptedTrueAndIsInvitedFalse(currentUser);
 
         List<TeamJoinDTO.TeamJoinForUser> response = new ArrayList<>();
@@ -142,7 +142,7 @@ public class TeamJoinService {
     }
 
     // 유저가 받은 팀 초대 조회
-    public List<TeamJoinDTO.TeamJoinForUser> getTeamInvitationListForUser(User currentUser) {
+    public List<TeamJoinDTO.TeamJoinForUser> getTeamInvitationsForUser(User currentUser) {
         List<TeamJoin> teamJoins = teamJoinRepository.findAllByUserAndIsAcceptedFalseAndIsInvitedTrue(currentUser);
 
         List<TeamJoinDTO.TeamJoinForUser> response = new ArrayList<>();

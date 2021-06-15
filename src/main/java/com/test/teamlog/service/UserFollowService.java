@@ -24,7 +24,7 @@ public class UserFollowService {
     private final UserFollowRepository userFollowRepository;
 
     // 팔로워 리스트 조회
-    public List<UserDTO.UserFollowInfo> getFollowerList(String userId, User currentUser) {
+    public List<UserDTO.UserFollowInfo> getFollowers(String userId, User currentUser) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "ID", userId));
         List<UserFollow> currentUserFollowings = userFollowRepository.findByFromUser(currentUser);
@@ -52,7 +52,7 @@ public class UserFollowService {
     }
 
     // 팔로잉 리스트 조회
-    public List<UserDTO.UserFollowInfo> getFollowingList(String userId, User currentUser) {
+    public List<UserDTO.UserFollowInfo> getFollowings(String userId, User currentUser) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "ID", userId));
         List<UserFollow> currentUserFollowings = userFollowRepository.findByFromUser(currentUser);

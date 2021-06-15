@@ -40,8 +40,8 @@ public class PostLikeController {
 
     @ApiOperation(value = "게시물을 좋아하는 사람 조회")
     @GetMapping("/posts/{postId}/likers")
-    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getPostLikerList(@PathVariable("postId") long postId) {
-        List<UserDTO.UserSimpleInfo> response = postService.getPostLikerList(postId);
+    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getPostLikers(@PathVariable("postId") long postId) {
+        List<UserDTO.UserSimpleInfo> response = postService.getPostLikers(postId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

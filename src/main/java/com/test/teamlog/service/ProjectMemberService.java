@@ -72,7 +72,7 @@ public class ProjectMemberService {
     }
 
     // 프로젝트 멤버 조회
-    public List<UserDTO.UserSimpleInfo> getProjectMemberList(Long id) {
+    public List<UserDTO.UserSimpleInfo> getProjectMembers(Long id) {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project", "id", id));
         List<ProjectMember> members = projectMemberRepository.findByProject(project);

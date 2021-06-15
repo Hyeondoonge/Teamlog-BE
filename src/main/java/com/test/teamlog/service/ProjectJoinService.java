@@ -84,7 +84,7 @@ public class ProjectJoinService {
     }
 
     // 프로젝트 가입 신청자 목록 조회
-    public List<ProjectJoinDTO.ProjectJoinForProject> getProjectApplyListForProject(Long projectId) {
+    public List<ProjectJoinDTO.ProjectJoinForProject> getProjectAppliesForProject(Long projectId) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project", "id", projectId));
 
@@ -104,7 +104,7 @@ public class ProjectJoinService {
     }
 
     // 프로젝트 멤버로 초대한 사용자 목록 조회
-    public List<ProjectJoinDTO.ProjectJoinForProject> getProjectInvitationListForProject(Long projectId) {
+    public List<ProjectJoinDTO.ProjectJoinForProject> getProjectInvitationsForProject(Long projectId) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project", "id", projectId));
 
@@ -148,7 +148,7 @@ public class ProjectJoinService {
     }
 
     // 유저가 가입 신청한 프로젝트 조회
-    public List<ProjectJoinDTO.ProjectJoinForUser> getProjectApplyListForUser(User currentUser) {
+    public List<ProjectJoinDTO.ProjectJoinForUser> getProjectAppliesForUser(User currentUser) {
         List<ProjectJoin> projectJoins = projectJoinRepository.findAllByUserAndIsAcceptedTrueAndIsInvitedFalse(currentUser);
 
         List<ProjectJoinDTO.ProjectJoinForUser> response = new ArrayList<>();

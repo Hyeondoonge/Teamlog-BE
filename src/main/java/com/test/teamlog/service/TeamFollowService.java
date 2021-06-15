@@ -25,7 +25,7 @@ public class TeamFollowService {
     private final TeamFollowerRepository teamFollowerRepository;
 
     // 유저가 팔로우하는 팀 목록 조회
-    public List<TeamDTO.TeamListResponse> getTeamListByTeamFollower(String userId) {
+    public List<TeamDTO.TeamListResponse> getFollowingTeamsByUser(String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "ID", userId));
         List<TeamFollower> teamFollowers = teamFollowerRepository.findAllByUser(user);
@@ -47,7 +47,7 @@ public class TeamFollowService {
     }
 
     // 해당 팀을 팔로우하는 사용자 목록 조회
-    public List<UserDTO.UserSimpleInfo> getTeamFollowerList(Long teamId) {
+    public List<UserDTO.UserSimpleInfo> getTeamFollowers(Long teamId) {
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new ResourceNotFoundException("Team", "ID", teamId));
 

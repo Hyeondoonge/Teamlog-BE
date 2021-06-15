@@ -46,22 +46,22 @@ public class ProjectJoinController{
 
     @ApiOperation(value = "프로젝트 멤버 신청 목록 조회")
     @GetMapping("/projects/{id}/joins/apply")
-    public ResponseEntity<List<ProjectJoinDTO.ProjectJoinForProject>> getProjectApplyListForProject(@PathVariable("id") Long id) {
-        List<ProjectJoinDTO.ProjectJoinForProject> response = projectJoinService.getProjectApplyListForProject(id);
+    public ResponseEntity<List<ProjectJoinDTO.ProjectJoinForProject>> getProjectAppliesForProject(@PathVariable("id") Long id) {
+        List<ProjectJoinDTO.ProjectJoinForProject> response = projectJoinService.getProjectAppliesForProject(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "프로젝트 멤버 초대 목록 조회")
     @GetMapping("/projects/{id}/joins/invitation")
-    public ResponseEntity<List<ProjectJoinDTO.ProjectJoinForProject>> getProjectInvitationListForProject(@PathVariable("id") Long id) {
-        List<ProjectJoinDTO.ProjectJoinForProject> response = projectJoinService.getProjectInvitationListForProject(id);
+    public ResponseEntity<List<ProjectJoinDTO.ProjectJoinForProject>> getProjectInvitationsForProject(@PathVariable("id") Long id) {
+        List<ProjectJoinDTO.ProjectJoinForProject> response = projectJoinService.getProjectInvitationsForProject(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "유저가 가입 신청한 프로젝트 조회")
     @GetMapping("users/project-apply")
-    public ResponseEntity<List<ProjectJoinDTO.ProjectJoinForUser>> getProjectApplyListForUser(@ApiIgnore @AuthenticationPrincipal User currentUser) {
-        List<ProjectJoinDTO.ProjectJoinForUser> response = projectJoinService.getProjectApplyListForUser(currentUser);
+    public ResponseEntity<List<ProjectJoinDTO.ProjectJoinForUser>> getProjectAppliesForUser(@ApiIgnore @AuthenticationPrincipal User currentUser) {
+        List<ProjectJoinDTO.ProjectJoinForUser> response = projectJoinService.getProjectAppliesForUser(currentUser);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

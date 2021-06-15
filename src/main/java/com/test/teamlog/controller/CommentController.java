@@ -23,7 +23,7 @@ public class CommentController {
 
     @ApiOperation(value = "댓글 생성")
     @PostMapping("/comments")
-    public ResponseEntity<ApiResponse> createProject(@RequestBody CommentDTO.CommentRequest request,
+    public ResponseEntity<ApiResponse> createComment(@RequestBody CommentDTO.CommentRequest request,
                                                      @ApiIgnore @AuthenticationPrincipal User currentUser) {
         ApiResponse apiResponse = commentService.createComment(request, currentUser);
         return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
@@ -31,7 +31,7 @@ public class CommentController {
 
     @ApiOperation(value = "댓글 수정")
     @PutMapping("/comments/{id}")
-    public ResponseEntity<ApiResponse> updateProject(@PathVariable("id") long id,
+    public ResponseEntity<ApiResponse> updateComment(@PathVariable("id") long id,
                                                      @RequestBody CommentDTO.CommentUpdateRequest request,
                                                      @ApiIgnore @AuthenticationPrincipal User currentUser) {
         ApiResponse apiResponse = commentService.updateComment(id, request);
@@ -40,7 +40,7 @@ public class CommentController {
 
     @ApiOperation(value = "댓글 삭제")
     @DeleteMapping("/comments/{id}")
-    public ResponseEntity<ApiResponse> deleteTask(@PathVariable("id") Long id,
+    public ResponseEntity<ApiResponse> deleteComment(@PathVariable("id") Long id,
                                                   @ApiIgnore @AuthenticationPrincipal User currentUser) {
         ApiResponse apiResponse = commentService.deleteComment(id);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
@@ -58,7 +58,7 @@ public class CommentController {
 
     @ApiOperation(value = "대댓글 조회")
     @GetMapping("/comments/{commentId}/child-comments")
-    public ResponseEntity<PagedResponse<CommentDTO.CommentInfo>> getChildComments(@PathVariable("commentId") long commentId,
+    public ResponseEntity<PagedResponse<CommentDTO.CommentInfo>> getChildCommentsByPost(@PathVariable("commentId") long commentId,
                                                                                   @RequestParam(value = "page", required = false, defaultValue = "0") int page,
                                                                                   @RequestParam(value = "size", required = false, defaultValue = "10") int size,
                                                                                   @ApiIgnore @AuthenticationPrincipal User currentUser) {

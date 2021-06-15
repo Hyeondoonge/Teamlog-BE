@@ -68,7 +68,7 @@ public class ProjectController {
 
     @ApiOperation(value = "프로젝트 썸네일 변경")
     @PutMapping("/projects/{projectId}/thumbnail")
-    public ResponseEntity<ApiResponse> updateUserProfileImage(@PathVariable("projectId") Long projectId,
+    public ResponseEntity<ApiResponse> updateProjectThumbnail(@PathVariable("projectId") Long projectId,
                                                               @RequestPart(value = "thumbnail", required = true) MultipartFile image,
                                                               @ApiIgnore @AuthenticationPrincipal User currentUser) {
         ApiResponse apiResponse = projectService.updateProjectThumbnail(projectId, image, currentUser);
@@ -77,7 +77,7 @@ public class ProjectController {
 
     @ApiOperation(value = "프로젝트 썸네일 삭제")
     @DeleteMapping("/projects/{projectId}/thumbnail")
-    public ResponseEntity<ApiResponse> deleteUserProfileImage(@PathVariable("projectId") Long projectId,
+    public ResponseEntity<ApiResponse> deleteProjectThumbnail(@PathVariable("projectId") Long projectId,
                                                               @ApiIgnore @AuthenticationPrincipal User currentUser) {
         ApiResponse apiResponse = projectService.deleteProjectThumbnail(projectId, currentUser);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);

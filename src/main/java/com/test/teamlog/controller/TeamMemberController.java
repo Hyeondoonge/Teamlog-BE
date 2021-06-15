@@ -25,7 +25,7 @@ public class TeamMemberController {
 
     @ApiOperation(value = "팀 초대 수락 ( 메인용 )")
     @PostMapping("/teams/{teamId}/members")
-    public ResponseEntity<ApiResponse> createProjectMember(@PathVariable("teamId") Long teamId,
+    public ResponseEntity<ApiResponse> createTeamMember(@PathVariable("teamId") Long teamId,
                                                            @ApiIgnore @AuthenticationPrincipal User currentUser) {
         ApiResponse apiResponse = teamMemberService.createTeamMember(teamId, currentUser);
         return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
@@ -55,8 +55,8 @@ public class TeamMemberController {
 
     @ApiOperation(value = "팀 멤버 조회")
     @GetMapping("/teams/{teamId}/members")
-    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getTeamMemberList(@PathVariable("teamId") Long teamId) {
-        List<UserDTO.UserSimpleInfo> response = teamMemberService.getTeamMemberList(teamId);
+    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getTeamMembers(@PathVariable("teamId") Long teamId) {
+        List<UserDTO.UserSimpleInfo> response = teamMemberService.getTeamMembers(teamId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

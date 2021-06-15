@@ -55,14 +55,14 @@ public class ProjectMemberController {
 
     @ApiOperation(value = "프로젝트 멤버 조회")
     @GetMapping("/projects/{projectId}/members")
-    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getProjectMemberList(@PathVariable("projectId") Long projectId) {
-        List<UserDTO.UserSimpleInfo> response = projectMemberService.getProjectMemberList(projectId);
+    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getProjectMembers(@PathVariable("projectId") Long projectId) {
+        List<UserDTO.UserSimpleInfo> response = projectMemberService.getProjectMembers(projectId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "프로젝트 멤버가 아닌 유저 조회")
     @GetMapping("/projects/{projectId}/not-members")
-    public ResponseEntity<List<UserDTO.UserSimpleInfo>> get(@PathVariable("projectId") Long projectId) {
+    public ResponseEntity<List<UserDTO.UserSimpleInfo>> getUsersNotInProjectMember(@PathVariable("projectId") Long projectId) {
         List<UserDTO.UserSimpleInfo> response = projectMemberService.getUsersNotInProjectMember(projectId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

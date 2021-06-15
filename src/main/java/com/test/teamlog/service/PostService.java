@@ -584,7 +584,7 @@ public class PostService {
     }
 
     // 포스트 좋아요 목록 조회
-    public List<UserDTO.UserSimpleInfo> getPostLikerList(Long postId) {
+    public List<UserDTO.UserSimpleInfo> getPostLikers(Long postId) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
 

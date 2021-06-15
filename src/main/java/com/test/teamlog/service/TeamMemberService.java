@@ -72,7 +72,7 @@ public class TeamMemberService {
 
 
     // 팀 멤버 조회
-    public List<UserDTO.UserSimpleInfo> getTeamMemberList(Long id) {
+    public List<UserDTO.UserSimpleInfo> getTeamMembers(Long id) {
         Team team = teamRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Team", "id", id));
         List<TeamMember> members = teamMemberRepository.findByTeam(team);

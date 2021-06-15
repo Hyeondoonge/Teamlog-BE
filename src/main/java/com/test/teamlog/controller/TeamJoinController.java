@@ -47,29 +47,29 @@ public class TeamJoinController {
 
     @ApiOperation(value = "팀 멤버 신청 목록 조회")
     @GetMapping("/teams/{id}/joins/apply")
-    public ResponseEntity<List<TeamJoinDTO.TeamJoinForTeam>> getTeamApplyListForTeam(@PathVariable("id") Long id) {
-        List<TeamJoinDTO.TeamJoinForTeam> response = teamJoinService.getTeamApplyListForTeam(id);
+    public ResponseEntity<List<TeamJoinDTO.TeamJoinForTeam>> getTeamAppliesForTeam(@PathVariable("id") Long id) {
+        List<TeamJoinDTO.TeamJoinForTeam> response = teamJoinService.getTeamAppliesForTeam(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "팀 멤버 초대 목록 조회")
     @GetMapping("/teams/{id}/joins/invitation")
-    public ResponseEntity<List<TeamJoinDTO.TeamJoinForTeam>> getTeamInvitationListForTeam(@PathVariable("id") Long id) {
-        List<TeamJoinDTO.TeamJoinForTeam> response = teamJoinService.getTeamInvitationListForTeam(id);
+    public ResponseEntity<List<TeamJoinDTO.TeamJoinForTeam>> getTeamInvitationsForTeam(@PathVariable("id") Long id) {
+        List<TeamJoinDTO.TeamJoinForTeam> response = teamJoinService.getTeamInvitationsForTeam(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "유저가 가입 신청한 팀 조회")
     @GetMapping("users/team-apply")
-    public ResponseEntity<List<TeamJoinDTO.TeamJoinForUser>> getTeamApplyListForUser(@ApiIgnore @AuthenticationPrincipal User currentUser) {
-        List<TeamJoinDTO.TeamJoinForUser> response = teamJoinService.getTeamApplyListForUser(currentUser);
+    public ResponseEntity<List<TeamJoinDTO.TeamJoinForUser>> getTeamAppliesForUser(@ApiIgnore @AuthenticationPrincipal User currentUser) {
+        List<TeamJoinDTO.TeamJoinForUser> response = teamJoinService.getTeamAppliesForUser(currentUser);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "유저가 받은 팀 초대 조회")
     @GetMapping("users/team-invitation")
-    public ResponseEntity<List<TeamJoinDTO.TeamJoinForUser>> getTeamInvitationListForUser(@ApiIgnore @AuthenticationPrincipal User currentUser) {
-        List<TeamJoinDTO.TeamJoinForUser> response = teamJoinService.getTeamInvitationListForUser(currentUser);
+    public ResponseEntity<List<TeamJoinDTO.TeamJoinForUser>> getTeamInvitationsForUser(@ApiIgnore @AuthenticationPrincipal User currentUser) {
+        List<TeamJoinDTO.TeamJoinForUser> response = teamJoinService.getTeamInvitationsForUser(currentUser);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

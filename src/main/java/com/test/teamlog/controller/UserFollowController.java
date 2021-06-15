@@ -40,17 +40,17 @@ public class UserFollowController {
 
     @ApiOperation(value = "유저 팔로워 조회")
     @GetMapping("/users/{id}/follower")
-    public ResponseEntity<List<UserDTO.UserFollowInfo>> getFollowerList(@PathVariable("id") String id,
+    public ResponseEntity<List<UserDTO.UserFollowInfo>> getFollowers(@PathVariable("id") String id,
                                                                         @ApiIgnore @AuthenticationPrincipal User currentUser) {
-        List<UserDTO.UserFollowInfo> response = userFollowService.getFollowerList(id, currentUser);
+        List<UserDTO.UserFollowInfo> response = userFollowService.getFollowers(id, currentUser);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @ApiOperation(value = "유저 팔로잉 조회")
     @GetMapping("/users/{id}/following")
-    public ResponseEntity<List<UserDTO.UserFollowInfo>> getFollowingList(@PathVariable("id") String id,
+    public ResponseEntity<List<UserDTO.UserFollowInfo>> getFollowings(@PathVariable("id") String id,
                                                                          @ApiIgnore @AuthenticationPrincipal User currentUser) {
-        List<UserDTO.UserFollowInfo> response = userFollowService.getFollowingList(id, currentUser);
+        List<UserDTO.UserFollowInfo> response = userFollowService.getFollowings(id, currentUser);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

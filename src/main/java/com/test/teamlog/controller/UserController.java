@@ -126,7 +126,6 @@ public class UserController {
         }
     }
 
-
     @ApiOperation(value = "회원 검색")
     @GetMapping("/users")
     public ResponseEntity<List<UserDTO.UserSimpleInfo>> searchUser(@RequestParam(value = "id", required = false, defaultValue = "") String id,

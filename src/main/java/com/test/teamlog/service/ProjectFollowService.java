@@ -29,7 +29,7 @@ public class ProjectFollowService {
     private final ProjectFollowerRepository projectFollowerRepository;
 
     // 유저가 팔로우하는 프로젝트 목록 조회
-    public List<ProjectDTO.ProjectListResponse> getProjectListByProjectFollower(String userId) {
+    public List<ProjectDTO.ProjectListResponse> getFollowingProjectsByUser(String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "ID", userId));
         List<ProjectFollower> projectFollowers = projectFollowerRepository.findAllByUser(user);
@@ -51,7 +51,7 @@ public class ProjectFollowService {
     }
 
     // 해당 프로젝트를 팔로우하는 사용자 목록 조회
-    public List<UserDTO.UserSimpleInfo> getProjectFollowerList(Long projectId) {
+    public List<UserDTO.UserSimpleInfo> getProjectFollowers(Long projectId) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project", "ID", projectId));
 
