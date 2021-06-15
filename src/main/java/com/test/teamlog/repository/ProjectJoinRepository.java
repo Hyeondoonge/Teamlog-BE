@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProjectJoinRepository extends JpaRepository<ProjectJoin, Long> {
-    <S extends ProjectJoin> S save(S entity);
-    void delete(ProjectJoin entity);
     Optional<ProjectJoin> findByProjectAndUser(Project project, User user);
     List<ProjectJoin> findAllByProjectAndIsAcceptedFalseAndIsInvitedTrue(Project project);
     List<ProjectJoin> findAllByProjectAndIsAcceptedTrueAndIsInvitedFalse(Project project);

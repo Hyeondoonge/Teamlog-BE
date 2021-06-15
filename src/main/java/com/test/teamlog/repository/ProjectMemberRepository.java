@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProjectMemberRepository extends JpaRepository<ProjectMember, Long> {
-    <S extends ProjectMember> S save(S entity);
-    void delete(ProjectMember entity);
-
     List<ProjectMember> findByUser(User user);
     List<ProjectMember> findByProject(Project project);
     Optional<ProjectMember> findByProjectAndUser(Project project, User user);

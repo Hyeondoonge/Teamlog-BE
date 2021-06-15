@@ -12,9 +12,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    <S extends Comment> S save(S entity);
-    void delete(Comment entity);
-
     List<Comment> findByPostAndParentCommentIsNull(Post post);
 
     List<Comment> findAllByWriter(User user);

@@ -9,7 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PostUpdateHistoryRepository extends JpaRepository<PostUpdateHistory, Long> {
-    <S extends PostUpdateHistory> S save(S entity);
-    void delete(PostUpdateHistory entity);
     List<PostUpdateHistory> findAllByPost(Post post, Sort sort);
 }

@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PostLikerRepository extends JpaRepository<PostLiker, Long> {
-    <S extends PostLiker> S save(S entity);
-    void delete(PostLiker entity);
-
     Optional<PostLiker> findByPostAndUser(Post post, User user);
     List<PostLiker> findAllByPost(Post post);
 }

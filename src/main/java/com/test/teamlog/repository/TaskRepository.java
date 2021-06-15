@@ -20,9 +20,6 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    <S extends Task> S save(S entity);
-    void delete(Task entity);
-
     List<Task> findByProject(Project project, Sort sort);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)

@@ -11,9 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
-    <S extends User> S save(S entity);
-    void delete(User entity);
-
     Optional<User> findById(String id);
 
     @Query("SELECT u FROM User u WHERE u.id LIKE concat('%',:id,'%') AND u.name LIKE concat('%',:name,'%')")

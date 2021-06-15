@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TeamMemberRepository extends JpaRepository<TeamMember, Long> {
-    <S extends TeamMember> S save(S entity);
-    void delete(TeamMember entity);
     List<TeamMember> findByUser(User user);
     List<TeamMember> findByTeam(Team team);
     Optional<TeamMember> findByTeamAndUser(Team team, User user);
