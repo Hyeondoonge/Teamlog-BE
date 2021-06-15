@@ -12,9 +12,6 @@ import java.util.List;
 
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    <S extends Project> S save(S entity);
-    void delete(Project entity);
-
     // 카운트
     @Query("SELECT COUNT(p) FROM Project p Where p.team = :team")
     long getProjectCount(@Param("team") Team team);

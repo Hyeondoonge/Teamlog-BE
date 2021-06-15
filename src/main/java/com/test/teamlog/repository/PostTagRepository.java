@@ -14,8 +14,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PostTagRepository extends JpaRepository<PostTag, Long> {
-    <S extends PostTag> S save(S entity);
-    void delete(PostTag entity);
     @Query("SELECT h.name FROM PostTag h WHERE h.post.project = :project GROUP BY h.name")
     List<String> getHashTagsInProjectPosts(@Param("project") Project project);
     List<PostTag> findAllByPost(Post post);

@@ -11,8 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface ProjectFollowerRepository extends JpaRepository<ProjectFollower, Long> {
-    <S extends ProjectFollower> S save(S entity);
-    void delete(ProjectFollower entity);
     List<ProjectFollower> findAllByUser(User user);
     List<ProjectFollower> findAllByProject(Project project);
     Optional<ProjectFollower> findByProjectAndUser(Project project,User user);

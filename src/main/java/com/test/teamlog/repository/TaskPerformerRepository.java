@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TaskPerformerRepository extends JpaRepository<TaskPerformer, Long> {
-    <S extends TaskPerformer> S save(S entity);
-    void delete(TaskPerformer entity);
 }
